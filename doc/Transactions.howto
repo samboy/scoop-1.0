@@ -1,0 +1,10 @@
+Transactions HOWTO
+Updated 04/20/02 by Rusty
+
+This document will describe how to set up credit card and paypal payment processing in Scoop, for example to sell ads on your site.
+
+
+CREDIT CARDS
+------------
+
+Currently the only credit card system accepted is Linkpoint's LPERL wrapper. For instructions on how to enable Scoop's Linkpoint capabilities, please see doc/Linkpoint.howto.

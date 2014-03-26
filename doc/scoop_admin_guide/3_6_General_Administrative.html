@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.6 General Administrative Tips</TITLE>
+<META NAME="description" CONTENT="3.6 General Administrative Tips">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="sag.css">
+
+<LINK REL="previous" HREF="3_5_Performance_Monitoring.html">
+<LINK REL="up" HREF="3_Setup_Administration.html">
+<LINK REL="next" HREF="4_Scoop_Features.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><A href="http://scoop.kuro5hin.org/"><IMG src="small_logo.jpg"></A><UL><LI><A href="sag.html">SAG Home</A></LI>
+<LI><A href="1_Introduction.html"><SPAN CLASS="arabic">1</SPAN> Introduction</A></LI>
+<LI><A href="2_Installation.html"><SPAN CLASS="arabic">2</SPAN> Installation</A></LI>
+<LI><A href="3_Setup_Administration.html"><SPAN CLASS="arabic">3</SPAN> Setup and Administration</A></LI>
+<UL>
+<LI><A href="3_1_Initial_Setup.html"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Initial Setup</A></LI>
+<LI><A href="3_2_Basic_Customization.html"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> Basic Customization</A></LI>
+<LI><A href="3_3_Users_Stories.html"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN> Users and Stories</A></LI>
+<LI><A href="3_4_Routine_Maintenance.html"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN> Routine Maintenance</A></LI>
+<LI><A href="3_5_Performance_Monitoring.html"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">5</SPAN> Performance Monitoring</A></LI>
+<LI><A href="3_6_General_Administrative.html" id="current"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN> General Administrative Tips</A></LI>
+</UL>
+<LI><A href="4_Scoop_Features.html"><SPAN CLASS="arabic">4</SPAN> Scoop Features and Customization</A></LI>
+<LI><A href="5_Extending_Scoop_s.html"><SPAN CLASS="arabic">5</SPAN> Extending Scoop's Abilities</A></LI>
+<LI><A href="A_Admin_Tools.html">A. The Admin Tools Menu</A></LI>
+<LI><A href="B_Scoop_Box.html">B. The Scoop Box Exchange</A></LI>
+<LI><A href="C_Frequently_Asked.html">C. Frequently Asked Questions</A></LI>
+<LI><A href="About_this_document.html">About this document ...</A></LI>
+</UL>
+</DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html366"
+  HREF="3_6_General_Administrative.html#SECTION00036100000000000000"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN> Security</A>
+<LI><A NAME="tex2html367"
+  HREF="3_6_General_Administrative.html#SECTION00036200000000000000"><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">2</SPAN> Access Control</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION00036000000000000000"></A>
+<A NAME="admin-general"></A>
+<BR>
+<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN> General Administrative Tips
+</H2>
+
+<P>
+
+<H3><A NAME="SECTION00036100000000000000">
+<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN> Security</A>
+</H3>
+
+<P>
+Boxes can run arbitrary perl code on the server, with the permissions of the apache daemon. This includes any external programs present on your system. Be careful when you give out edit_box perms.
+
+<P>
+
+<H3><A NAME="SECTION00036200000000000000">
+<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">2</SPAN> Access Control</A>
+</H3>
+
+<P>
+If you have a development site that you don't really want people to see, or you're still setting it up and <EM>don't want it to be publicly available just yet</EM>, you can easily use apache's HTTP basic authentication.  This is not a very good way to keep people out of sensitive areas, being only one step above ``Halt! Friend or Foe?'' ``Friend, of course'' ``Carry on''.  It will keep bots and casual passers-by out, though.
+
+<P>
+To turn on basic authentication with Scoop, find the Location directive for Scoop's root directory, and add the following lines (modify as necessary to suit your site) and stop then start your Apache server.
+
+<P>
+<PRE>
+AuthType Basic
+AuthName "Whatever"
+AuthUserFile /path/to/.htpasswd
+Require user foo
+</PRE>
+
+<P>
+Then create entries in the .htpasswd file as described in the Apache documentation.  When you are ready to open your site to the world, just delete or comment out those four lines, then stop and start Apache.
+
+<P>
+An alternative to the basic authentication is Scoop's ``Safe Mode'', which returns a 503 Service Unavailable to everybody except the Superuser account, allowing you to set your site up then ``flick a switch'' (the variable <B>safe_mode</B>) to let everybody else in. See section&nbsp;<A HREF="4_21_Access_Control.html#features-safemode">4.21</A> for details.
+
+<P>
+
+<HR>
+<ADDRESS>
+<I>janra <BR>
+2004-03-26</I>
+</ADDRESS>
+</BODY>
+</HTML>
